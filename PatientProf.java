@@ -2,17 +2,30 @@
 
 public class PatientProf
 {
-    private String adminID;
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String phone;
-    private float copay;
-    private String insuType;
-    private String patientType;
-    private medCond medCondInfo;
+    private String adminID = "default";
+    private String firstName = "John";
+    private String lastName = "Smith";
+    private String address = "Nowhere";
+    private String phone = "None";
+    private float copay = 0;
+    private String insuType = "default";
+    private String patientType = "default";
+    private MedCond medCondInfo;
 
-    public PatientProf(String adminID, String firstName, String lastName, String address, String phone, float copay, String insuType, String patientType, medCond medCondInfo)
+    public PatientProf()
+    {
+        this.adminID = "default";
+        this.firstName = "default";
+        this.lastName = "default";
+        this.address = "default";
+        this.phone = "default";
+        this.copay = 0;
+        this.insuType = "default";
+        this.patientType = "default";
+        this.medCondInfo = new MedCond();
+    }
+    
+    public PatientProf(String adminID, String firstName, String lastName, String address, String phone, float copay, String insuType, String patientType, MedCond medCondInfo)
     {
         this.adminID = adminID;
         this.firstName = firstName;
@@ -90,11 +103,11 @@ public class PatientProf
         this.patientType = patientType;
     }
 
-    public medCond getMedCondInfo(){
+    public MedCond getMedCondInfo(){
         return this.medCondInfo;
     }
 
-    public void updateMedCondInfo(medCond medCondInfo)
+    public void updateMedCondInfo(MedCond medCondInfo)
     {
         this.medCondInfo = medCondInfo;
     }

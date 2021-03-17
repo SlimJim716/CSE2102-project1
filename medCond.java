@@ -1,11 +1,19 @@
-public class medCond 
+public class MedCond 
 {
     private String mdContact;
     private String mdPhone;
     private String algType;
     private String illType;
 
-    public medCond(String mdContact, String mdPhone, String algType, String illType)
+    public MedCond()
+    {
+        this.mdContact = "default";
+        this.mdPhone = "default";
+        this.algType = "default";
+        this.illType = "default";
+    }
+
+    public MedCond(String mdContact, String mdPhone, String algType, String illType)
     {
         this.mdContact = mdContact;
         this.mdPhone = mdPhone;
@@ -45,9 +53,4 @@ public class medCond
         this.illType = illType;
     }
 
-
-
-
-
-    
 }
