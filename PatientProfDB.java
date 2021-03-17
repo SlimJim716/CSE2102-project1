@@ -1,7 +1,5 @@
 import java.util.Arrays;
 
-import javax.lang.model.util.ElementScanner6;
-
 public class PatientProfDB
 {
     private int numPatient = 0;
