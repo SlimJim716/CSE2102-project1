@@ -10,9 +10,9 @@ public class PatientProf
     private float copay;
     private String insuType;
     private String patientType;
-    //private MedCond medCondInfo;
+    private medCond medCondInfo;
 
-    public PatientProf(String adminID, String firstName, String lastName, String address, String phone, float copay, String insuType, String patientType)
+    public PatientProf(String adminID, String firstName, String lastName, String address, String phone, float copay, String insuType, String patientType, medCond medCondInfo)
     {
         this.adminID = adminID;
         this.firstName = firstName;
@@ -22,7 +22,7 @@ public class PatientProf
         this.copay = copay;
         this.insuType = insuType;
         this.patientType = patientType;
-        //this.medCondInfo = medCondInfo;
+        this.medCondInfo = medCondInfo;
         
     }
 
@@ -88,6 +88,15 @@ public class PatientProf
 
     public void updatePatientType(String patientType) {
         this.patientType = patientType;
+    }
+
+    public medCond getMedCondInfo(){
+        return this.medCondInfo;
+    }
+
+    public void updateMedCondInfo(medCond medCondInfo)
+    {
+        this.medCondInfo = medCondInfo;
     }
 
 }
