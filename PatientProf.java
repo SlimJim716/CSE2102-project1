@@ -2,14 +2,14 @@
 
 public class PatientProf
 {
-    private String adminID = "default";
-    private String firstName = "John";
-    private String lastName = "Smith";
-    private String address = "Nowhere";
-    private String phone = "None";
-    private float copay = 0;
-    private String insuType = "default";
-    private String patientType = "default";
+    private String adminID;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String phone;
+    private float copay;
+    private String insuType;
+    private String patientType;
     private MedCond medCondInfo;
 
     public PatientProf()

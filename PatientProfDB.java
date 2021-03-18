@@ -37,7 +37,7 @@ public class PatientProfDB
         return found;
     }
 
-    //looks for a profile. if present, returns the profile. if not, returns a basic one...?
+    //looks for a profile. if present, returns the profile. if not, returns a empty one...?
     public PatientProf findProfile(String id, String lname)
     {
         int index = this.profileIndex(id, lname);
@@ -68,5 +68,12 @@ public class PatientProfDB
             return false;
         }
     }
+
+
+    //unfinished =================================================================================
+
+    //public void writeAllPatientProf()
+
+    //public void initalizeDatabase()
 
 }
