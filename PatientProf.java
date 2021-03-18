@@ -12,6 +12,7 @@ public class PatientProf
     private String patientType;
     private MedCond medCondInfo;
 
+    //constructor with no arguments
     public PatientProf()
     {
         this.adminID = "default";
@@ -25,6 +26,7 @@ public class PatientProf
         this.medCondInfo = new MedCond();
     }
     
+    //constructor with all arguments
     public PatientProf(String adminID, String firstName, String lastName, String address, String phone, float copay, String insuType, String patientType, MedCond medCondInfo)
     {
         this.adminID = adminID;
@@ -39,6 +41,10 @@ public class PatientProf
         
     }
 
+
+    //==============================
+    //get and set methods below here
+    //==============================
     public String getAdminID() {
         return this.adminID;
     }

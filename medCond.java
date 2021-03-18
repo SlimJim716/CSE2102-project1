@@ -5,6 +5,7 @@ public class MedCond
     private String algType;
     private String illType;
 
+    //constructor with no arguments
     public MedCond()
     {
         this.mdContact = "default";
@@ -13,6 +14,7 @@ public class MedCond
         this.illType = "default";
     }
 
+    //constructor with all arguments
     public MedCond(String mdContact, String mdPhone, String algType, String illType)
     {
         this.mdContact = mdContact;
@@ -20,6 +22,10 @@ public class MedCond
         this.algType = algType;
         this.illType = illType;
     }
+
+    //==============================
+    //get and set methods below here
+    //==============================
 
     public String getMdContact() {
         return this.mdContact;

@@ -7,12 +7,14 @@ public class PatientProfDB
     private String fileName;
     private PatientProf[] patientList;
 
+    //unfinished
     public PatientProfDB(String dbname)
     {
         //needs more in this
         this.fileName = dbname;
     }
 
+    //append a new profile at the end of the patientList
     public void insertNewProfile(PatientProf profile)
     {
         this.patientList = Arrays.copyOf(this.patientList, this.numPatient + 1);
@@ -52,7 +54,7 @@ public class PatientProfDB
         }
     }
 
-    //deletes a profile if present. Does not erase the last entry of patientlist entirely, but we decrement the counter so it appear we delete it.
+    //deletes a profile if present. Does not erase the last entry of patientlist entirely, but we decrement the numPatients so it appears we delete it.
     public boolean deleteProfile(String id, String lname)
     {
         int index = this.profileIndex(id, lname);
@@ -71,6 +73,10 @@ public class PatientProfDB
 
 
     //unfinished =================================================================================
+
+    //public PatientProf findFirstProfile()
+
+    //public PatientProf findNextProfile()
 
     //public void writeAllPatientProf()
 

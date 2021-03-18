@@ -5,6 +5,7 @@ public class PatientProfInterface
 
     //public void PatientProfInterface(String file)
 
+    //present the user with a menu and record their choice
     public void getUserChoice()
     {
         System.out.println("Please choose an option below:");
