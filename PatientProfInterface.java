@@ -1,12 +1,13 @@
 import java.util.Scanner;
 public class PatientProfInterface 
 {
+    //private String sessionID;
 
 
-    //public void PatientProfInterface(String file)
+    //public static void PatientProfInterface(String file)
 
     //present the user with a menu and record their choice
-    public void getUserChoice()
+    public static void getUserChoice()
     {
         System.out.println("Please choose an option below:");
         System.out.println("0. Exit\n" + 
@@ -68,5 +69,15 @@ public class PatientProfInterface
     //public static void createNewPatientProf()
 
     //public static void createNewMedCond()
+
+
     
+    //============================
+    //MAIN BELOW
+    //============================
+
+    public static void main(String[] args)
+    {
+        System.out.println("main");
+    }
 }

@@ -7,7 +7,7 @@ public class PatientProfDB
     private String fileName;
     private PatientProf[] patientList;
 
-    //unfinished
+    //unfinished ======================
     public PatientProfDB(String dbname)
     {
         //needs more in this
@@ -48,9 +48,10 @@ public class PatientProfDB
             return this.patientList[index];    
         }
         else
-        {
-            PatientProf temp = new PatientProf();
-            return temp;
+        { //didnt find anything
+            //PatientProf temp = new PatientProf();
+            //return temp;
+            return null;
         }
     }
 
@@ -66,17 +67,48 @@ public class PatientProfDB
                 this.patientList[i] = this.patientList[i + 1];
             }
 
+            this.patientList[this.numPatient - 1] = null;
             this.numPatient--;
             return false;
         }
     }
 
 
+
     //unfinished =================================================================================
 
-    //public PatientProf findFirstProfile()
+    //finds first instance of a profile with adminID id
+    public PatientProf findFirstProfile(String id)
+    {
+        this.currentPatientIndex = 0;
+        for(int i = 0; i < this.numPatient; i++)
+        {
+            if(this.patientList[i].getAdminID() == id)
+            {
+                this.currentPatientIndex = 0;
+                return this.patientList[i];
+            }
+        }
 
-    //public PatientProf findNextProfile()
+        //if nothing found
+        return null;
+    }
+
+    //finds next instance of a profile with adminID id, assuming we called findFirstProfile already
+    public PatientProf findNextProfile(String id)
+    {
+        for(int i = this.currentPatientIndex; i < this.numPatient; i++)
+        {
+            if(this.patientList[i].getAdminID() == id)
+            {
+                this.currentPatientIndex = i;
+                return this.patientList[i];
+            }
+        }
+
+        //if nothing found
+        return null;
+    }
 
     //public void writeAllPatientProf()
 
