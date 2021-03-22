@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.util.Arrays;
-//import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -13,10 +12,9 @@ public class PatientProfDB
     private String fileName;
     private PatientProf[] patientList;
 
-    //unfinished ======================
+    //init patientProfDB
     public PatientProfDB(String dbname)
     {
-        //needs more in this
         this.fileName = dbname;
         this.patientList = new PatientProf[0];
     }
@@ -80,10 +78,6 @@ public class PatientProfDB
         }
     }
 
-
-
-    //unfinished =================================================================================
-
     //finds first instance of a profile with adminID id
     public PatientProf findFirstProfile(String id)
     {
@@ -117,6 +111,7 @@ public class PatientProfDB
         return null;
     }
 
+    //writes all profiles in memory to file specified at fileName attribute
     public void writeAllPatientProf()
     {
         try
@@ -155,6 +150,7 @@ public class PatientProfDB
         }
     }
 
+    //loads database from textfile to memory. Ignores incomplete profiles.
     public void initalizeDatabase()
     {
         try

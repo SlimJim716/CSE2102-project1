@@ -5,6 +5,7 @@ public class PatientProfInterface
     private String file;
     private PatientProfDB db;
 
+    //init interface with clean db every time
     public PatientProfInterface(String file)
     {
         this.file = file;
@@ -70,6 +71,7 @@ public class PatientProfInterface
         //in.close();
     }
 
+    //deletes a patient profile
     public void deletePatientProf()
     {
         Scanner in = new Scanner(System.in);
@@ -91,6 +93,7 @@ public class PatientProfInterface
         //in.close();
     }
 
+    //finds patient profile specified
     public void findPatientProf()
     {
         Scanner in = new Scanner(System.in);
@@ -114,6 +117,7 @@ public class PatientProfInterface
         //in.close();
     }
 
+    //allows user to pick attributes to update a patient profile
     public void updatePatientProf()
     {
         Scanner in = new Scanner(System.in);
@@ -215,6 +219,7 @@ public class PatientProfInterface
         
     }
 
+    //displays a certain profile based on adminID and last name
     public void displayPatientProf(PatientProf patient)
     {
         System.out.println("AdminID: " + patient.getAdminID());
@@ -232,6 +237,7 @@ public class PatientProfInterface
         System.out.println("Illness Type: " + patient.getMedCondInfo().getIllType());
     }
 
+    //displays all profiles belonging to adminID specified, one at a time.
     public void displayAllPatientProf()
     {
         Scanner in = new Scanner(System.in);
@@ -259,18 +265,21 @@ public class PatientProfInterface
         //in.close();
     }
 
+    //saves database
     public void writeToDB()
     {
         System.out.println("Saving to database file: " + this.file);
         this.db.writeAllPatientProf();
     }
 
+    //loads database
     public void initDB()
     {
         System.out.println("Loading database file: " + this.file);
         this.db.initalizeDatabase();
     }
 
+    //prompts user for all info needed to make a patient profile, and adds it to memory.
     public void createNewPatientProf()
     {
         Scanner in = new Scanner(System.in);
@@ -318,6 +327,7 @@ public class PatientProfInterface
 
     }
 
+    //asks user for all info needed to make a new med condition, adds it to a patient profile.
     public MedCond createNewMedCond()
     {
         System.out.println("Please enter patient Medical condition information");
@@ -350,8 +360,6 @@ public class PatientProfInterface
     public static void main(String[] args)
     {
         System.out.println("Starting...");
-
-        Scanner in = new Scanner(System.in);
 
         String dbPath = "C:/Users/Jimmy/Desktop/java_database.txt";
         PatientProfInterface face = new PatientProfInterface(dbPath);
