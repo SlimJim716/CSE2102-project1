@@ -30,7 +30,7 @@ public class PatientProfDB
 
         for(int i = 0; i < this.numPatient; i++)
         {
-            if(this.patientList[i].getAdminID() == id && this.patientList[i].getLastName() == lname)
+            if(this.patientList[i].getAdminID().equals(id) && this.patientList[i].getLastName().equals(lname))
             {
                 found = i;
                 break;
@@ -84,7 +84,7 @@ public class PatientProfDB
         this.currentPatientIndex = 0;
         for(int i = 0; i < this.numPatient; i++)
         {
-            if(this.patientList[i].getAdminID() == id)
+            if(this.patientList[i].getAdminID().equals(id))
             {
                 this.currentPatientIndex = i;
                 return this.patientList[i];
@@ -100,7 +100,7 @@ public class PatientProfDB
     {
         for(int i = this.currentPatientIndex; i < this.numPatient; i++)
         {
-            if(this.patientList[i].getAdminID() == id)
+            if(this.patientList[i].getAdminID().equals(id))
             {
                 this.currentPatientIndex = i;
                 return this.patientList[i];

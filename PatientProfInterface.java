@@ -14,6 +14,8 @@ public class PatientProfInterface
     //present the user with a menu and record their choice
     public void getUserChoice()
     {
+        System.out.println("==============================");
+        System.out.println("");
         System.out.println("Please choose an option below:");
         System.out.println("0. Exit\n" + 
                             "1. Enter a new PatientProf\n" + 
@@ -49,12 +51,13 @@ public class PatientProfInterface
                 this.displayAllPatientProf();
                 break;
             case 6:
-                this.writeToDB();
+                //this.writeToDB();
                 break;
             case 7:
-                this.initDB();
+                //this.initDB();
                 break;
         }
+        //in.close();
     }
 
     public void deletePatientProf()
@@ -74,7 +77,7 @@ public class PatientProfInterface
             System.out.println("Patient could not be deleted...");
         }
 
-        in.close();
+        //in.close();
     }
 
     public void findPatientProf()
@@ -97,7 +100,7 @@ public class PatientProfInterface
             this.displayPatientProf(dude);
         }
 
-        in.close();
+        //in.close();
     }
 
     public void updatePatientProf()
@@ -114,21 +117,21 @@ public class PatientProfInterface
         if(dude == null)
         {
             System.out.println("Patient cannot not be modified");
-            in.close();
+            //in.close();
             return;
         }
 
         System.out.println("Patient found. Please choose an option below:");
-        System.out.println("0. Cancel" + 
-                            "1. Modify Patient Address" + 
-                            "2. Modify patient phone" + 
-                            "3. Modify patient insuType" + 
-                            "4. Modify patient copay" + 
-                            "5. Modify patient patient type" + 
-                            "6. Modify patient MD Contact" + 
-                            "7. Modify patient MD Phone" + 
-                            "8. Modify patient illness type" + 
-                            "9. Modify patient allergy type");
+        System.out.println("0. Cancel\n" + 
+                            "1. Modify Patient Address\n" + 
+                            "2. Modify patient phone\n" + 
+                            "3. Modify patient insuType\n" + 
+                            "4. Modify patient copay\n" + 
+                            "5. Modify patient patient type\n" + 
+                            "6. Modify patient MD Contact\n" + 
+                            "7. Modify patient MD Phone\n" + 
+                            "8. Modify patient illness type\n" + 
+                            "9. Modify patient allergy type\n");
         int choice = in.nextInt();
         
         switch(choice)
@@ -182,7 +185,7 @@ public class PatientProfInterface
                 dude.getMedCondInfo().updateAlgType(newAll);
                 break;
         }
-        in.close();
+        //in.close();
         
     }
 
@@ -214,7 +217,7 @@ public class PatientProfInterface
         if(cur == null)
         {
             System.out.println("No patients!");
-            in.close();
+            //in.close();
             return;
         }
 
@@ -228,7 +231,7 @@ public class PatientProfInterface
         while(cur != null);
 
         System.out.println("End of patients list...");
-        in.close();
+        //in.close();
     }
 
     //public void writeToDB()
@@ -255,8 +258,9 @@ public class PatientProfInterface
         System.out.print("Phone: ");
         String phn = in.nextLine();
 
-        System.out.println("Copay");
-        int pay = in.nextInt();
+        System.out.print("Copay: ");
+        String paystr = in.nextLine();
+        int pay = Integer.parseInt(paystr);
 
         System.out.print("Insu Type: ");
         String insu = in.nextLine();
@@ -270,7 +274,9 @@ public class PatientProfInterface
 
         this.db.insertNewProfile(newPatient);
 
-        in.close();
+        System.out.println("Patient Added!");
+
+        //in.close();
 
     }
 
@@ -292,7 +298,7 @@ public class PatientProfInterface
         System.out.print("Illness Type: ");
         String ill = in.nextLine();
 
-        in.close();
+        //in.close();
 
         return new MedCond(contact, mdphone, alg, ill);
     }
@@ -305,6 +311,16 @@ public class PatientProfInterface
 
     public static void main(String[] args)
     {
-        System.out.println("main");
+        System.out.println("Starting...");
+
+        String path = "C:/test";
+
+        PatientProfInterface face = new PatientProfInterface(path);
+
+        while(true)
+        {
+            face.getUserChoice();
+        }
+            
     }
 }
