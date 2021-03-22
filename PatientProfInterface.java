@@ -39,6 +39,7 @@ public class PatientProfInterface
         {
             case 0:
                 System.out.println("Bye.");
+                in.close();
                 System.exit(0);
                 break;
             case 1:
@@ -57,10 +58,10 @@ public class PatientProfInterface
                 this.displayAllPatientProf();
                 break;
             case 6:
-                //this.writeToDB();
+                this.writeToDB();
                 break;
             case 7:
-                //this.initDB();
+                this.initDB();
                 break;
             default:
                 System.out.println("Not a valid option");
@@ -258,9 +259,17 @@ public class PatientProfInterface
         //in.close();
     }
 
-    //public void writeToDB()
+    public void writeToDB()
+    {
+        System.out.println("Saving to database file: " + this.file);
+        this.db.writeAllPatientProf();
+    }
 
-    //public void initDB()
+    public void initDB()
+    {
+        System.out.println("Loading database file: " + this.file);
+        this.db.initalizeDatabase();
+    }
 
     public void createNewPatientProf()
     {
@@ -342,13 +351,15 @@ public class PatientProfInterface
     {
         System.out.println("Starting...");
 
-        String path = "C:/test";
-        PatientProfInterface face = new PatientProfInterface(path);
+        Scanner in = new Scanner(System.in);
+
+        String dbPath = "C:/Users/Jimmy/Desktop/java_database.txt";
+        PatientProfInterface face = new PatientProfInterface(dbPath);
 
         while(true)
         {
             face.getUserChoice();
         }
-            
+           
     }
 }

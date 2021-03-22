@@ -1,4 +1,10 @@
+import java.util.Scanner;
 import java.util.Arrays;
+//import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class PatientProfDB
 {
@@ -111,8 +117,83 @@ public class PatientProfDB
         return null;
     }
 
-    //public void writeAllPatientProf()
+    public void writeAllPatientProf()
+    {
+        try
+        {
+            File file = new File(this.fileName);
+            if(!file.exists()) file.createNewFile();
+            FileWriter writer = new FileWriter(this.fileName);
 
-    //public void initalizeDatabase()
+            for(int i = 0; i < this.numPatient; i++)
+            {
+                String content = "";
+                content += this.patientList[i].getAdminID() + "\n";
+                content += this.patientList[i].getFirstName() + "\n";
+                content += this.patientList[i].getLastName() + "\n";
+                content += this.patientList[i].getAddress() + "\n";
+                content += this.patientList[i].getPhone() + "\n";
+                content += this.patientList[i].getCopay() + "\n";
+                content += this.patientList[i].getInsuType() + "\n";
+                content += this.patientList[i].getPatientType() + "\n";
+                content += this.patientList[i].getMedCondInfo().getMdContact() + "\n";
+                content += this.patientList[i].getMedCondInfo().getMdPhone() + "\n";
+                content += this.patientList[i].getMedCondInfo().getAlgType() + "\n";
+                content += this.patientList[i].getMedCondInfo().getIllType() + "\n";
+
+                writer.write(content);
+            }
+
+            writer.close();
+            System.out.println("Successfully wrote to file: " + this.fileName);
+
+        }
+        catch(IOException e)
+        {
+            System.out.println("Oops, something bad happened");
+            e.printStackTrace();
+        }
+    }
+
+    public void initalizeDatabase()
+    {
+        try
+        {
+            int patientAttribute = 0;
+            String[] attributes = new String[12];
+
+            this.patientList = new PatientProf[0];
+            this.numPatient = 0;
+            this.currentPatientIndex = 0;
+
+            File file = new File(this.fileName);
+            Scanner fileReader = new Scanner(file);
+
+            while(true)
+            {
+                attributes[patientAttribute] = fileReader.nextLine();
+                patientAttribute++;
+
+                if(patientAttribute == 12)
+                {
+                    MedCond med = new MedCond(attributes[8], attributes[9], attributes[10], attributes[11]);
+                    PatientProf patient = new PatientProf(attributes[0], attributes[1], attributes[2], attributes[3], attributes[4], Float.parseFloat(attributes[5]), attributes[6], attributes[7], med);
+                    this.insertNewProfile(patient);
+                    patientAttribute = 0;
+                }
+            
+                if(!fileReader.hasNextLine()) break;
+            }
+
+            fileReader.close();
+            System.out.println("Database loaded from file: " + this.fileName);
+        }
+
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Oops, file not found");
+            e.printStackTrace();
+        }
+    }
 
 }
