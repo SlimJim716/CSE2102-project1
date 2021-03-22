@@ -12,6 +12,7 @@ public class PatientProfDB
     {
         //needs more in this
         this.fileName = dbname;
+        this.patientList = new PatientProf[0];
     }
 
     //append a new profile at the end of the patientList
@@ -85,7 +86,7 @@ public class PatientProfDB
         {
             if(this.patientList[i].getAdminID() == id)
             {
-                this.currentPatientIndex = 0;
+                this.currentPatientIndex = i;
                 return this.patientList[i];
             }
         }
