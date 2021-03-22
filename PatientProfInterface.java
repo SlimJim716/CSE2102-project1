@@ -28,6 +28,7 @@ public class PatientProfInterface
         
         Scanner in = new Scanner(System.in);
         int choice = in.nextInt();
+        in.nextLine();
 
         switch(choice)
         {
@@ -63,18 +64,19 @@ public class PatientProfInterface
     public void deletePatientProf()
     {
         Scanner in = new Scanner(System.in);
-        System.out.println("Please enter a patient last name: ");
+        System.out.print("Please enter a patient last name: ");
         String patient = in.nextLine();
-        System.out.println("Please enter your adminID: ");
+        System.out.print("Please enter your adminID: ");
         String id = in.nextLine();
 
+    
         if(this.db.deleteProfile(id, patient))
         {
-            System.out.printf("%s deleted", patient);
+            System.out.printf("%s deleted\n", patient);
         }
         else
         {
-            System.out.println("Patient could not be deleted...");
+            System.out.println("Patient does not exist, or you do not have permission to delete.");
         }
 
         //in.close();
@@ -84,16 +86,16 @@ public class PatientProfInterface
     {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Please enter a patient last name: ");
+        System.out.print("Please enter a patient last name: ");
         String patient = in.nextLine();
 
-        System.out.println("Please enter an admin ID: ");
+        System.out.print("Please enter an admin ID: ");
         String id = in.nextLine();
 
         PatientProf dude = this.db.findProfile(id, patient);
         if(dude == null)
         {
-            System.out.println("Patient not found");
+            System.out.println("Patient does not exist, or you do not have permission to view.");
         }
         else
         {
@@ -106,17 +108,17 @@ public class PatientProfInterface
     public void updatePatientProf()
     {
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter a patient last name: ");
+        System.out.print("Enter a patient last name: ");
         String patient = in.nextLine();
 
-        System.out.println("Enter admin ID");
+        System.out.print("Enter admin ID: ");
         String id = in.nextLine();
 
         PatientProf dude = this.db.findProfile(id, patient);
 
         if(dude == null)
         {
-            System.out.println("Patient cannot not be modified");
+            System.out.println("Patient does not exist, or you do not have permission to modify the profile");
             //in.close();
             return;
         }
@@ -133,6 +135,7 @@ public class PatientProfInterface
                             "8. Modify patient illness type\n" + 
                             "9. Modify patient allergy type\n");
         int choice = in.nextInt();
+        in.nextLine();
         
         switch(choice)
         {
@@ -140,47 +143,48 @@ public class PatientProfInterface
                 System.out.println("Modification Canceled");
                 break;
             case 1:
-                System.out.println("Please enter new value:");
+                System.out.print("Please enter new value:");
                 String newAddr = in.nextLine();
                 dude.updateAddress(newAddr);
                 break;
             case 2:
-                System.out.println("Please enter new value:");
+                System.out.print("Please enter new value:");
                 String newPhone = in.nextLine();
                 dude.updateAddress(newPhone);
                 break;
             case 3:
-                System.out.println("Please enter new value:");
+                System.out.print("Please enter new value:");
                 String newInsu = in.nextLine();
                 dude.updateInsuType(newInsu);
                 break;
             case 4:
-                System.out.println("Please enter new value:");
+                System.out.print("Please enter new value:");
                 int newCopay = in.nextInt();
+                in.nextLine();
                 dude.updateCopay(newCopay);
                 break;
             case 5:
-                System.out.println("Please enter new value:");
+                System.out.print("Please enter new value:");
                 String newType = in.nextLine();
                 dude.updatePatientType(newType);
                 break;
             case 6:
-                System.out.println("Please enter new value:");
+                System.out.print("Please enter new value:");
                 String newContact = in.nextLine();
                 dude.getMedCondInfo().updateMdContact(newContact);
                 break;
             case 7:
-                System.out.println("Please enter new value:");
+                System.out.print("Please enter new value:");
                 String newmdphone = in.nextLine();
                 dude.getMedCondInfo().updateMdPhone(newmdphone);
                 break;
             case 8:
-                System.out.println("Please enter new value:");
+                System.out.print("Please enter new value:");
                 String newIll = in.nextLine();
                 dude.getMedCondInfo().updateIllType(newIll);
                 break;
             case 9:
-                System.out.println("Please enter new value:");
+                System.out.print("Please enter new value:");
                 String newAll = in.nextLine();
                 dude.getMedCondInfo().updateAlgType(newAll);
                 break;
@@ -209,7 +213,7 @@ public class PatientProfInterface
     public void displayAllPatientProf()
     {
         Scanner in = new Scanner(System.in);
-        System.out.println("Please enter an admin ID: ");
+        System.out.print("Please enter an admin ID: ");
         String id = in.nextLine();
 
         PatientProf cur = this.db.findFirstProfile(id);
@@ -227,8 +231,7 @@ public class PatientProfInterface
             cur = this.db.findNextProfile(id);
             System.out.println("Press any key for next patient");
             in.nextLine();
-        } 
-        while(cur != null);
+        } while(cur != null);
 
         System.out.println("End of patients list...");
         //in.close();
@@ -314,7 +317,6 @@ public class PatientProfInterface
         System.out.println("Starting...");
 
         String path = "C:/test";
-
         PatientProfInterface face = new PatientProfInterface(path);
 
         while(true)

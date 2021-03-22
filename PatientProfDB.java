@@ -63,14 +63,14 @@ public class PatientProfDB
         if(index == -1) return false;
         else
         {
-            for(int i = index; i < this.numPatient; i++)
+            for(int i = index; i < this.numPatient - 1; i++)
             {
                 this.patientList[i] = this.patientList[i + 1];
             }
 
             this.patientList[this.numPatient - 1] = null;
             this.numPatient--;
-            return false;
+            return true;
         }
     }
 
@@ -98,7 +98,7 @@ public class PatientProfDB
     //finds next instance of a profile with adminID id, assuming we called findFirstProfile already
     public PatientProf findNextProfile(String id)
     {
-        for(int i = this.currentPatientIndex; i < this.numPatient; i++)
+        for(int i = this.currentPatientIndex + 1; i < this.numPatient; i++)
         {
             if(this.patientList[i].getAdminID().equals(id))
             {
