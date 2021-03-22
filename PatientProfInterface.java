@@ -27,6 +27,11 @@ public class PatientProfInterface
                             "7. Initalize database\n");
         
         Scanner in = new Scanner(System.in);
+        while(!in.hasNextInt())
+        {
+            System.out.print("Please enter number menu option: ");
+            in.nextLine();
+        }
         int choice = in.nextInt();
         in.nextLine();
 
@@ -56,6 +61,9 @@ public class PatientProfInterface
                 break;
             case 7:
                 //this.initDB();
+                break;
+            default:
+                System.out.println("Not a valid option");
                 break;
         }
         //in.close();
@@ -134,6 +142,11 @@ public class PatientProfInterface
                             "7. Modify patient MD Phone\n" + 
                             "8. Modify patient illness type\n" + 
                             "9. Modify patient allergy type\n");
+         while(!in.hasNextInt())
+        {
+            System.out.print("Please enter number menu option: ");
+            in.nextLine();
+        }
         int choice = in.nextInt();
         in.nextLine();
         
@@ -159,6 +172,11 @@ public class PatientProfInterface
                 break;
             case 4:
                 System.out.print("Please enter new value:");
+                while(!in.hasNextInt())
+                {
+                    System.out.print("Please enter a numerical value for new Copay: ");
+                    in.nextLine();
+                }
                 int newCopay = in.nextInt();
                 in.nextLine();
                 dude.updateCopay(newCopay);
@@ -187,6 +205,9 @@ public class PatientProfInterface
                 System.out.print("Please enter new value:");
                 String newAll = in.nextLine();
                 dude.getMedCondInfo().updateAlgType(newAll);
+                break;
+            default:
+                System.out.println("Not a valid option");
                 break;
         }
         //in.close();
@@ -262,8 +283,13 @@ public class PatientProfInterface
         String phn = in.nextLine();
 
         System.out.print("Copay: ");
-        String paystr = in.nextLine();
-        int pay = Integer.parseInt(paystr);
+        while(!in.hasNextInt())
+        {
+            System.out.print("Please enter a numerical value for Copay: ");
+            in.nextLine();
+        }
+        int pay = in.nextInt();
+        in.nextLine();
 
         System.out.print("Insu Type: ");
         String insu = in.nextLine();
