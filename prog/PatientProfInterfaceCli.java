@@ -1,12 +1,13 @@
+package prog;
 import java.util.Scanner;
-public class PatientProfInterface 
+public class PatientProfInterfaceCli
 {
 
     private String file;
     private PatientProfDB db;
 
     //init interface with clean db every time
-    public PatientProfInterface(String file)
+    public PatientProfInterfaceCli(String file)
     {
         this.file = file;
         this.db = new PatientProfDB(file);

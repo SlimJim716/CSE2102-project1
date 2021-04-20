@@ -1,3 +1,4 @@
+package prog;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.io.File;

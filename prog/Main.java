@@ -1,3 +1,4 @@
+package prog;
 public class Main
 {
     public static void main(String[] args)
@@ -5,7 +6,7 @@ public class Main
         System.out.println("Starting...");
 
         String dbPath = "C:/Users/Jimmy/Desktop/java_database.txt";
-        PatientProfInterface face = new PatientProfInterface(dbPath);
+        PatientProfInterfaceCli face = new PatientProfInterfaceCli(dbPath);
 
         while(true)
         {
