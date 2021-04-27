@@ -5,7 +5,10 @@ import java.awt.event.*;
 
 import prog.*;
 
+//main menu of the GUI
 public class MainMenuGUI implements ActionListener {
+    
+    //add components that need to be accessed
     JFrame frame = new JFrame();
     JRadioButton createPatient = new JRadioButton("Create New Patient");
     JRadioButton deletePatient = new JRadioButton("Delete Patient");
@@ -14,7 +17,7 @@ public class MainMenuGUI implements ActionListener {
     JRadioButton displayAll = new JRadioButton("Display All Profiles");
     JButton selectButton = new JButton("Select");
 
-
+    //groups radio buttons
     ButtonGroup choices = new ButtonGroup();
 
     public PatientProfInterface intface;
@@ -48,7 +51,7 @@ public class MainMenuGUI implements ActionListener {
         frame.setVisible(true);
 
 
-
+        //method to close the program is this window is closed
         frame.addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent windowEvent)
@@ -61,11 +64,12 @@ public class MainMenuGUI implements ActionListener {
         selectButton.addActionListener(this);
     }
 
+    //check for button press
+    //based on which radio button is selected, call the corresponding gui window to appear
     public void actionPerformed(ActionEvent e)
     {
         if(createPatient.isSelected())
         {
-            //do something
             CreateProfileGUI create = new CreateProfileGUI(this.intface);
         }
 

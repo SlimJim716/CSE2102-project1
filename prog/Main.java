@@ -5,6 +5,7 @@ import gui.*;
 
 public class Main
 {
+    //main class. Check args for cli or gui useage, and path to db file
     public static void main(String[] args)
     {
         if(args.length != 2)
@@ -31,7 +32,6 @@ public class Main
             //do gui stuff here
             System.out.println("the gui should start");
             String dbPath = args[1];
-            //System.out.println(dbPath);
             PatientProfInterface face = new PatientProfInterface(dbPath);
             face.initDB();
             MainMenuGUI menu = new MainMenuGUI(face);

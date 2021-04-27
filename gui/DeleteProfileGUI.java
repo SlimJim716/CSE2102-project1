@@ -4,6 +4,7 @@ import java.awt.event.*;
 
 import prog.*;
 
+//class to delete a profile with gui
 public class DeleteProfileGUI implements ActionListener
 {
     JFrame frame = new JFrame();
@@ -36,6 +37,9 @@ public class DeleteProfileGUI implements ActionListener
 
     public void actionPerformed(ActionEvent e)
     {
+        //if submit button is pressed, check to see if adminid and last name match a record and try to delete if so
+        //if so, display confirmed gui
+        //if not, display error
         if(this.intface.deletePatientProf(adminidBox.getText(), lnameBox.getText()))
         {
             ConfirmedGUI deleted = new ConfirmedGUI();

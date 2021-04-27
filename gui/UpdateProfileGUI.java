@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import prog.*;
 
+//window to update the information of one patient at a time
 public class UpdateProfileGUI implements ActionListener
 {
     JFrame frame = new JFrame();
@@ -42,6 +43,8 @@ public class UpdateProfileGUI implements ActionListener
 
     }
 
+    //when submit is pressed, get the admin id, last name, value to change and what to change it to
+    //update the profile
     public void actionPerformed(ActionEvent e)
     {
         String adminid = adminidBox.getText();

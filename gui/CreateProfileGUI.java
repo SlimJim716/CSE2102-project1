@@ -104,6 +104,8 @@ public class CreateProfileGUI implements ActionListener
 
     public void actionPerformed(ActionEvent e)
     {
+        //wait for button press
+        //when pressed, get all information collected in the jframe and call createnewpatient using that information and display confirmed gui
         this.intface.createNewPatientProf(adminidbox.getText(), firstnamebox.getText(), lastnamebox.getText(), addressbox.getText(), phonebox.getText(), copaybox.getText(), insurbox.getSelectedItem().toString(), patientTypeBox.getSelectedItem().toString(), contactBox.getText(), mdphoneBox.getText(), allergiesbox.getSelectedItem().toString(), illnessbox.getSelectedItem().toString());
         System.out.println("added");
         ConfirmedGUI confirmed = new ConfirmedGUI();

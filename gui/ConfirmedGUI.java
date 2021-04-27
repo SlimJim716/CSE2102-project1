@@ -4,6 +4,7 @@ import java.awt.event.*;
 
 import prog.*;
 
+//class to display a successful confirmed window
 public class ConfirmedGUI implements ActionListener
 {
     JFrame frame = new JFrame();
@@ -26,6 +27,7 @@ public class ConfirmedGUI implements ActionListener
 
     public void actionPerformed(ActionEvent e)
     {
+        //if button clicked, dispose of window
         frame.dispose();
     }
 

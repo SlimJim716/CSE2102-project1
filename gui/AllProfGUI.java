@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import prog.*;
 
+//class that will display all profiles of an admin id until none are left
 public class AllProfGUI implements ActionListener
 {
     JFrame frame = new JFrame();
@@ -12,6 +13,7 @@ public class AllProfGUI implements ActionListener
 
     public AllProfGUI(PatientProfInterface ui, PatientProf dude)
     {
+        //if no more patients, stop
         if(dude == null)
         {
             return;
@@ -20,6 +22,7 @@ public class AllProfGUI implements ActionListener
         intface = ui;
         pro = dude;
 
+        //extract all patient info and put into frame
         String adminid = dude.getAdminID();
         JLabel adminLabel = new JLabel("Admin ID");
         JTextField adminField = new JTextField();
@@ -127,6 +130,7 @@ public class AllProfGUI implements ActionListener
 
     }
 
+    //if next button is pressed, get the next progile and make a new window
     public void actionPerformed(ActionEvent e)
     {
         AllProfGUI nxt = new AllProfGUI(this.intface, this.intface.getDB().findNextProfile(this.pro.getAdminID()));

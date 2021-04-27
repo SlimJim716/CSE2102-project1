@@ -4,6 +4,7 @@ import java.awt.event.*;
 
 import prog.*;
 
+//class to display error message
 public class ErrorGUI implements ActionListener
 {
     JFrame frame = new JFrame();
@@ -28,6 +29,7 @@ public class ErrorGUI implements ActionListener
 
     public void actionPerformed(ActionEvent e)
     {
+        //close window when okay button is pressed.
         frame.dispose();
     }
 

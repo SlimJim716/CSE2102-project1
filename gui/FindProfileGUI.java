@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import prog.*;
 
+//class to check if admin id and last name match a record, if so passes them into gui to display that profile
 public class FindProfileGUI implements ActionListener
 {
     JFrame frame = new JFrame();
@@ -34,6 +35,9 @@ public class FindProfileGUI implements ActionListener
 
     public void actionPerformed(ActionEvent e)
     {
+        //check profile
+        //if null error
+        //otherwise display the profile
         PatientProf man = this.intface.findPatientProf(adminidBox.getText(), lnameBox.getText());
         if(man != null)
         {

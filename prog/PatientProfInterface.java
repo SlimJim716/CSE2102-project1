@@ -15,12 +15,13 @@ public class PatientProfInterface
         this.db = new PatientProfDB(file);
     }
 
+    //gets db variable from this
     public PatientProfDB getDB()
     {
         return this.db;
     }
 
-    //deletes a patient profile
+    //deletes a patient profile, returns status
     public boolean deletePatientProf(String adminid, String last)
     {
         String patient = last;

@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import prog.*;
 
+//class to display a single profile with read only information
 public class SingleProfile implements ActionListener
 {
     JFrame frame = new JFrame();
@@ -12,6 +13,7 @@ public class SingleProfile implements ActionListener
                             float cpay, String insur, String patient, String mdcon,
                             String mdph, String allerg, String ill)
     {
+        //take each value from the contructor and put it into its own field
         frame.setTitle("Profile: " + lname);
 
         JLabel adminLabel = new JLabel("Admin ID");
@@ -111,6 +113,7 @@ public class SingleProfile implements ActionListener
 
     public void actionPerformed(ActionEvent e)
     {
+        //dispose of window when okay is clicked
         frame.dispose();
     }
 

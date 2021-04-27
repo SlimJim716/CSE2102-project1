@@ -4,6 +4,8 @@ import java.awt.event.*;
 
 import prog.*;
 
+//class to start to display all profiles of certain admin id.
+//checks to see if admin id has any patients, then calls different class and disposes of itself.
 public class DisplayAllGUI implements ActionListener
 {
     JFrame frame = new JFrame();
@@ -31,6 +33,7 @@ public class DisplayAllGUI implements ActionListener
 
     public void actionPerformed(ActionEvent e)
     {
+        //if no patients under the ID, alert the user and close
         PatientProf pat = this.intface.getDB().findFirstProfile(adminidBox.getText());
         if(pat == null)
         {
@@ -44,6 +47,7 @@ public class DisplayAllGUI implements ActionListener
         }
         else
         {
+            //if patients, call new function to display them
             new AllProfGUI(this.intface, pat);
             frame.dispose(); 
         }
