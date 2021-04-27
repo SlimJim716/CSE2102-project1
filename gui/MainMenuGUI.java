@@ -80,7 +80,7 @@ public class MainMenuGUI implements ActionListener {
 
         else if(findPatient.isSelected())
         {
-            //do something
+            FindProfileGUI find = new FindProfileGUI(this.intface);
         }
 
         else if(displayAll.isSelected())

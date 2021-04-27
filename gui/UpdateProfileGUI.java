@@ -34,7 +34,7 @@ public class UpdateProfileGUI implements ActionListener
         frame.add(value);
         frame.add(findButton);
 
-        frame.setSize(300,250);
+        frame.setSize(300,300);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
         frame.setVisible(true);
 

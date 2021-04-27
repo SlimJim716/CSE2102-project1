@@ -98,24 +98,22 @@ public class PatientProfInterface
     }
 
     //finds patient profile specified
-    public void findPatientProf()
+    public PatientProf findPatientProf(String adminid, String lname)
     {
-        Scanner in = new Scanner(System.in);
-
         System.out.print("Please enter a patient last name: ");
-        String patient = in.nextLine();
+        String patient = lname;
 
         System.out.print("Please enter an admin ID: ");
-        String id = in.nextLine();
+        String id = adminid;
 
         PatientProf dude = this.db.findProfile(id, patient);
         if(dude == null)
         {
-            System.out.println("Patient does not exist, or you do not have permission to view.");
+            return null;
         }
         else
         {
-            this.displayPatientProf(dude);
+            return dude;
         }
 
         //in.close();
