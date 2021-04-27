@@ -87,12 +87,10 @@ public class PatientProfInterface
     
         if(this.db.deleteProfile(id, patient))
         {
-            //ConfirmedGUI deleted = new ConfirmedGUI();
             return true;
         }
         else
         {
-            //ErrorGUI no = new ErrorGUI();
             return false;
         }
 
@@ -124,103 +122,45 @@ public class PatientProfInterface
     }
 
     //allows user to pick attributes to update a patient profile
-    public void updatePatientProf()
+    public void updatePatientProf(String adminid, String last, String choice, String value)
     {
-        Scanner in = new Scanner(System.in);
         System.out.print("Enter a patient last name: ");
-        String patient = in.nextLine();
+        String patient = last;
 
         System.out.print("Enter admin ID: ");
-        String id = in.nextLine();
+        String id = adminid;
 
         PatientProf dude = this.db.findProfile(id, patient);
 
         if(dude == null)
         {
-            System.out.println("Patient does not exist, or you do not have permission to modify the profile");
-            //in.close();
+            ErrorGUI bad = new ErrorGUI();
             return;
+            //in.close();
         }
 
         System.out.println("Patient found. Please choose an option below:");
-        System.out.println("0. Cancel\n" + 
-                            "1. Modify Patient Address\n" + 
-                            "2. Modify patient phone\n" + 
-                            "3. Modify patient insuType\n" + 
-                            "4. Modify patient copay\n" + 
-                            "5. Modify patient patient type\n" + 
-                            "6. Modify patient MD Contact\n" + 
-                            "7. Modify patient MD Phone\n" + 
-                            "8. Modify patient illness type\n" + 
-                            "9. Modify patient allergy type\n");
-         while(!in.hasNextInt())
-        {
-            System.out.print("Please enter number menu option: ");
-            in.nextLine();
-        }
-        int choice = in.nextInt();
-        in.nextLine();
         
         switch(choice)
         {
-            case 0:
-                System.out.println("Modification Canceled");
+            case "Address":
+                dude.updateAddress(value);
                 break;
-            case 1:
-                System.out.print("Please enter new value:");
-                String newAddr = in.nextLine();
-                dude.updateAddress(newAddr);
+            case "Phone":
+                dude.updatePhone(value);
                 break;
-            case 2:
-                System.out.print("Please enter new value:");
-                String newPhone = in.nextLine();
-                dude.updateAddress(newPhone);
+            case "Insurance Type":
+                dude.updateInsuType(value);
                 break;
-            case 3:
-                System.out.print("Please enter new value:");
-                String newInsu = in.nextLine();
-                dude.updateInsuType(newInsu);
+            case "Copay":
+                dude.updateCopay(Integer.parseInt(value));
                 break;
-            case 4:
-                System.out.print("Please enter new value:");
-                while(!in.hasNextInt())
-                {
-                    System.out.print("Please enter a numerical value for new Copay: ");
-                    in.nextLine();
-                }
-                int newCopay = in.nextInt();
-                in.nextLine();
-                dude.updateCopay(newCopay);
-                break;
-            case 5:
-                System.out.print("Please enter new value:");
-                String newType = in.nextLine();
-                dude.updatePatientType(newType);
-                break;
-            case 6:
-                System.out.print("Please enter new value:");
-                String newContact = in.nextLine();
-                dude.getMedCondInfo().updateMdContact(newContact);
-                break;
-            case 7:
-                System.out.print("Please enter new value:");
-                String newmdphone = in.nextLine();
-                dude.getMedCondInfo().updateMdPhone(newmdphone);
-                break;
-            case 8:
-                System.out.print("Please enter new value:");
-                String newIll = in.nextLine();
-                dude.getMedCondInfo().updateIllType(newIll);
-                break;
-            case 9:
-                System.out.print("Please enter new value:");
-                String newAll = in.nextLine();
-                dude.getMedCondInfo().updateAlgType(newAll);
-                break;
-            default:
-                System.out.println("Not a valid option");
+            case "Patient Type":
+                dude.updatePatientType(value);
                 break;
         }
+
+        ConfirmedGUI confm = new ConfirmedGUI();
         //in.close();
         
     }

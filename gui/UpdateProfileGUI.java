@@ -11,13 +11,18 @@ public class UpdateProfileGUI implements ActionListener
     JButton findButton = new JButton("Find");
     String choices[] = {"Address", "Phone", "Insurance Type", "Copay", "Patient Type"};
     JComboBox<String> fieldsBox = new JComboBox<String>(choices);
+    JTextField value = new JTextField();
 
-    public UpdateProfileGUI()
+    public PatientProfInterface intface;
+
+    public UpdateProfileGUI(PatientProfInterface ui)
     {
+        intface = ui;
         frame.setTitle("Update Profile");
         JLabel adminLabel = new JLabel("Admin ID");
         JLabel lnameLabel = new JLabel("Last Name");
         JLabel choicesLabel = new JLabel("Update Field");
+        JLabel newVal = new JLabel("Enter new value below");
 
         frame.add(adminLabel);
         frame.add(adminidBox);
@@ -25,17 +30,30 @@ public class UpdateProfileGUI implements ActionListener
         frame.add(lnameBox);
         frame.add(choicesLabel);
         frame.add(fieldsBox);
+        frame.add(newVal);
+        frame.add(value);
         frame.add(findButton);
 
-        frame.setSize(300,200);
+        frame.setSize(300,250);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
         frame.setVisible(true);
+
+        findButton.addActionListener(this);
 
     }
 
     public void actionPerformed(ActionEvent e)
     {
-        //do stuff
+        String adminid = adminidBox.getText();
+        String lastname = lnameBox.getText();
+        String choice = fieldsBox.getSelectedItem().toString();
+        String val = value.getText();
+
+        this.intface.updatePatientProf(adminid, lastname, choice, val);
+        
+        frame.dispose();
+
+
     }
 
 }

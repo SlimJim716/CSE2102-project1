@@ -75,7 +75,7 @@ public class MainMenuGUI implements ActionListener {
 
         else if(updatePatient.isSelected())
         {
-            //so something
+            UpdateProfileGUI update = new UpdateProfileGUI(this.intface);
         }
 
         else if(findPatient.isSelected())

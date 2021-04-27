@@ -17,7 +17,7 @@ public class ConfirmedGUI implements ActionListener
         frame.add(okaylabel);
         frame.add(okayButton);
 
-        frame.setSize(200,100);
+        frame.setSize(300,100);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
         frame.setVisible(true);
 
