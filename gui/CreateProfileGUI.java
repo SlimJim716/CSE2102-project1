@@ -31,8 +31,11 @@ public class CreateProfileGUI implements ActionListener
 
     JButton submitButton = new JButton("Submit");
 
-    public CreateProfileGUI()
+    public PatientProfInterface intface;
+
+    public CreateProfileGUI(PatientProfInterface ui)
     {
+        intface = ui;
         frame.setTitle("Create Profile");
 
         //add labels
@@ -95,11 +98,17 @@ public class CreateProfileGUI implements ActionListener
         frame.setSize(300,600);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
         frame.setVisible(true);
+
+        submitButton.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e)
     {
-        //do stuff
+        this.intface.createNewPatientProf(adminidbox.getText(), firstnamebox.getText(), lastnamebox.getText(), addressbox.getText(), phonebox.getText(), copaybox.getText(), insurbox.getSelectedItem().toString(), patientTypeBox.getSelectedItem().toString(), contactBox.getText(), mdphoneBox.getText(), allergiesbox.getSelectedItem().toString(), illnessbox.getSelectedItem().toString());
+        System.out.println("added");
+        ConfirmedGUI confirmed = new ConfirmedGUI();
+        frame.dispose();
+        
     }
 
 

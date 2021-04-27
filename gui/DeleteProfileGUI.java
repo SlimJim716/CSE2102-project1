@@ -11,8 +11,11 @@ public class DeleteProfileGUI implements ActionListener
     JTextField lnameBox = new JTextField();
     JButton deleteButton = new JButton("Delete");
 
-    public DeleteProfileGUI()
+    public PatientProfInterface intface;
+
+    public DeleteProfileGUI(PatientProfInterface ui)
     {
+        intface = ui;
         frame.setTitle("Delete Profile");
         JLabel adminLabel = new JLabel("Admin ID");
         JLabel lnameLabel = new JLabel("Last Name");
@@ -27,10 +30,21 @@ public class DeleteProfileGUI implements ActionListener
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
         frame.setVisible(true);
 
+        deleteButton.addActionListener(this);
+
     }
 
     public void actionPerformed(ActionEvent e)
     {
-        //do stuff
+        if(this.intface.deletePatientProf(adminidBox.getText(), lnameBox.getText()))
+        {
+            ConfirmedGUI deleted = new ConfirmedGUI();
+            frame.dispose();
+        }
+        else
+        {
+            ErrorGUI no = new ErrorGUI();
+            frame.dispose();
+        }
     }
 }

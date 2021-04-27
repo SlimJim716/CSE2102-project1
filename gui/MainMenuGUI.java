@@ -16,8 +16,11 @@ public class MainMenuGUI implements ActionListener {
 
     ButtonGroup choices = new ButtonGroup();
 
-    public MainMenuGUI()
+    public PatientProfInterface intface;
+
+    public MainMenuGUI(PatientProfInterface ui)
     {
+        intface = ui;
         choices.add(createPatient);
         choices.add(deletePatient);
         choices.add(updatePatient);
@@ -43,19 +46,52 @@ public class MainMenuGUI implements ActionListener {
         frame.setLayout(null);
         frame.setVisible(true);
 
+
+
         frame.addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent windowEvent)
             {
+                intface.writeToDB();
                 System.exit(0);
             }
         });
 
-
+        selectButton.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e)
     {
+        if(createPatient.isSelected())
+        {
+            //do something
+            CreateProfileGUI create = new CreateProfileGUI(this.intface);
+        }
+
+        else if(deletePatient.isSelected())
+        {
+            DeleteProfileGUI delete = new DeleteProfileGUI(this.intface);
+        }
+
+        else if(updatePatient.isSelected())
+        {
+            //so something
+        }
+
+        else if(findPatient.isSelected())
+        {
+            //do something
+        }
+
+        else if(displayAll.isSelected())
+        {
+            //do stuff
+        }
+
+        else
+        {
+            System.out.println("oops");
+        }
         
     }
     

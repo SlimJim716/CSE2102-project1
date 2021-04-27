@@ -1,5 +1,8 @@
 package prog;
 import java.util.Scanner;
+
+import gui.ConfirmedGUI;
+import gui.ErrorGUI;
 public class PatientProfInterface
 {
 
@@ -14,6 +17,7 @@ public class PatientProfInterface
     }
 
     //present the user with a menu and record their choice
+    /*
     public void getUserChoice()
     {
         System.out.println("==============================");
@@ -71,24 +75,25 @@ public class PatientProfInterface
         }
         //in.close();
     }
-
+*/
     //deletes a patient profile
-    public void deletePatientProf()
+    public boolean deletePatientProf(String adminid, String last)
     {
-        Scanner in = new Scanner(System.in);
         System.out.print("Please enter a patient last name: ");
-        String patient = in.nextLine();
+        String patient = last;
         System.out.print("Please enter your adminID: ");
-        String id = in.nextLine();
+        String id = adminid;
 
     
         if(this.db.deleteProfile(id, patient))
         {
-            System.out.printf("%s deleted\n", patient);
+            //ConfirmedGUI deleted = new ConfirmedGUI();
+            return true;
         }
         else
         {
-            System.out.println("Patient does not exist, or you do not have permission to delete.");
+            //ErrorGUI no = new ErrorGUI();
+            return false;
         }
 
         //in.close();
@@ -281,42 +286,34 @@ public class PatientProfInterface
     }
 
     //prompts user for all info needed to make a patient profile, and adds it to memory.
-    public void createNewPatientProf()
+    public void createNewPatientProf(String admin, String first, String last, String address, String phone, String cpay, String insurance, String patType, String mdcon, String mdph, String allerg, String ill)
     {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Please enter new patient information:");
 
         System.out.print("adminID: ");
-        String adminid = in.nextLine();
+        String adminid = admin;
 
         System.out.print("First Name: ");
-        String fname = in.nextLine();
+        String fname = first;
 
         System.out.print("Last Name: ");
-        String lname = in.nextLine();
+        String lname = last;
 
         System.out.print("Address: ");
-        String addr = in.nextLine();
+        String addr = address;
 
         System.out.print("Phone: ");
-        String phn = in.nextLine();
+        String phn = phone;
 
         System.out.print("Copay: ");
-        while(!in.hasNextInt())
-        {
-            System.out.print("Please enter a numerical value for Copay: ");
-            in.nextLine();
-        }
-        int pay = in.nextInt();
-        in.nextLine();
+        int pay = Integer.parseInt(cpay);
 
         System.out.print("Insu Type: ");
-        String insu = in.nextLine();
+        String insu = insurance;
 
         System.out.print("Patient Type: ");
-        String type = in.nextLine();
+        String type = patType;
 
-        MedCond meds = this.createNewMedCond();
+        MedCond meds = this.createNewMedCond(mdcon, mdph, allerg, ill);
 
         PatientProf newPatient = new PatientProf(adminid, fname, lname, addr, phn, pay, insu, type, meds);
 
@@ -329,23 +326,21 @@ public class PatientProfInterface
     }
 
     //asks user for all info needed to make a new med condition, adds it to a patient profile.
-    public MedCond createNewMedCond()
+    public MedCond createNewMedCond(String mdcon, String mdphn, String allerg, String illness)
     {
         System.out.println("Please enter patient Medical condition information");
-
-        Scanner in = new Scanner(System.in);
-        
+    
         System.out.print("MD Contact: ");
-        String contact = in.nextLine();
+        String contact = mdcon;
         
         System.out.print("MD Phone: ");
-        String mdphone = in.nextLine();
+        String mdphone = mdphn;
 
         System.out.print("Allergy Type: ");
-        String alg = in.nextLine();
+        String alg = allerg;
 
         System.out.print("Illness Type: ");
-        String ill = in.nextLine();
+        String ill = illness;
 
         //in.close();
 
