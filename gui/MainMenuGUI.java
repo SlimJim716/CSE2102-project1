@@ -1,5 +1,6 @@
 package gui;
 import javax.swing.*;
+
 import java.awt.event.*;
 
 import prog.*;
@@ -85,7 +86,7 @@ public class MainMenuGUI implements ActionListener {
 
         else if(displayAll.isSelected())
         {
-            //do stuff
+            DisplayAllGUI all = new DisplayAllGUI(this.intface);
         }
 
         else

@@ -16,6 +16,11 @@ public class PatientProfInterface
         this.db = new PatientProfDB(file);
     }
 
+    public PatientProfDB getDB()
+    {
+        return this.db;
+    }
+
     //present the user with a menu and record their choice
     /*
     public void getUserChoice()

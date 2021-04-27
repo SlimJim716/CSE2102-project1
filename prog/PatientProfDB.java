@@ -1,6 +1,7 @@
 package prog;
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -186,6 +187,10 @@ public class PatientProfDB
             System.out.println("Database loaded from file: " + this.fileName);
         }
 
+        catch(NoSuchElementException e)
+        {
+            System.out.println("DB is empty, nothing to initalize");
+        }
         catch(FileNotFoundException e)
         {
             System.out.println("Oops, file not found");
